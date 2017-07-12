@@ -8,6 +8,9 @@ public class TwoSum_Map{
 		for(int i=0;i<nums.length;i++)
 			map1.put(nums[i],i);
 
+		for(Map.Entry entry : map1.entrySet())
+			System.out.println(entry.getKey() + ": " + entry.getValue());
+
 		for(int i=0;i<nums.length;i++){
 			int complement = target - nums[i];
 			if(map1.containsKey(complement) && map1.get(complement)!=i)
@@ -19,11 +22,11 @@ public class TwoSum_Map{
 	public static void main(String[] args){
 
 		//test
-		System.out.printf("Enter the sum:");
+		System.out.printf("Enter the sum: ");
 		Scanner scan = new Scanner(System.in);
 		int target = scan.nextInt();
 		scan.nextLine();
-		System.out.printf("Enter the numbers:");
+		System.out.printf("Enter the numbers: ");
 		String[] input = scan.nextLine().split(" ");
 
 		int[] nums = new int[input.length];
