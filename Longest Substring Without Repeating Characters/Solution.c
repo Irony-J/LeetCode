@@ -16,8 +16,14 @@ int lengthOfLongestSubstring(char* s) {
 	if(len == 1) return 1;
 
 	int* max = (int*)malloc(sizeof(int)*len);
+	for(int i=0;i<len;i++)
+		max[i] = 0;
 	max[len - 1] = 1;
+
 	int P[128];
+	for(int i=0;i<128;i++)
+		P[i] = 0;
+		
 	P[s[len-1]] = len - 1;
 	int result = -1;
 
