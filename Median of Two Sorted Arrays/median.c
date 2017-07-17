@@ -22,8 +22,6 @@ double findMedianSortedArrays(int* nums1, int nums1Size, int* nums2, int nums2Si
 		int median = total/2 + 1;
 		int arr[median+1];
 
-		printf("median: %d\n",median);
-
 		int i = -1,j = -1;
 		int step = 0;
 
