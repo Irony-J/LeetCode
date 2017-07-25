@@ -26,11 +26,13 @@ public class Solution {
         			if(A[center-i]!= A[center+i])
         				break;
         		}
+
         		if(i==(radius+1) && A[center-i+1]==A[center+i-1]){
+        			//System.out.printf("center:%c radius:%d\n",A[center],radius);
         			if(A[center-i+1]!=' ')
         				return s.substring((center-radius)/2,(center+radius)/2 + 1);
-        			else
-        				return s.substring((center-radius+1)/2,(center+radius)/2 + 1);
+        			else if(radius!=1 && A[center-i+1]==' ')
+        				return s.substring((center-radius+1)/2,(center+radius-1)/2 + 1);
         		}
 
         	}
