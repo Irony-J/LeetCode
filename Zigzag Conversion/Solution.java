@@ -14,6 +14,12 @@ public class Solution {
     public String convert(String s, int numRows) {
 
     	int len = s.length();
+
+    	//corner case
+    	if(numRows==1 || numRows>=len || len<=2)
+    		return s;
+
+
     	int step = 2*numRows-2;
 
     	StringBuilder result = new StringBuilder();
@@ -42,8 +48,6 @@ public class Solution {
     		}
 
     	}
-
-
     	//last row
     	for(int i=numRows-1;i<len;i+=step)
     		result.append(s.charAt(i));
@@ -51,7 +55,7 @@ public class Solution {
     	return result.toString();
         
     }
-
+    //For test
     public static void main(String[] args){
     	Solution s = new Solution();
 
