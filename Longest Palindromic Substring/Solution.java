@@ -1,50 +1,39 @@
-import java.util.Arrays;
 public class Solution {
     public static String longestPalindrome(String s) {
-        
-        int len = 2 * s.length() - 1;
-        int radius = (len-1)/2;
+       
+       int start = 0;
+       int end = 0;
 
-        char[] A = new char[len];
+       for(int i=0;i<s.length();i++){
+          
+          int length1 = expand(s,i,i);
+          int length2 = expand(s,i,i+1);
+          int len = Math.max(length1,length2);
+          
+          if(len > end - start){
 
-        int k = 0;
-        int m = 0;
-        for(m=0;m<s.length()-1;m++){
-        	A[k] = s.charAt(m);
-        	A[k+1] = ' ';
-        	k+=2;
-        }
-        A[k] = s.charAt(m);
+            end = i + len/2;
+            start = i - (len-1)/2;
+          }	
+       }
 
-        while(radius>0){
+       return s.substring(start,end+1);
 
-        	int center = radius;
-        	int end = len - radius - 1;
-        	for(; center <= end; center++){
-        		int i = 1;
-        		for(; i<=radius; i++){
-        			if(A[center-i]!= A[center+i])
-        				break;
-        		}
+    }
 
-        		if(i==(radius+1) && A[center-i+1]==A[center+i-1]){
-        			//System.out.printf("center:%c radius:%d\n",A[center],radius);
-        			if(A[center-i+1]!=' ')
-        				return s.substring((center-radius)/2,(center+radius)/2 + 1);
-        			else if(radius!=1 && A[center-i+1]==' ')
-        				return s.substring((center-radius+1)/2,(center+radius-1)/2 + 1);
-        		}
+    public static int expand(String s,int L,int R){
 
-        	}
+    	while(L>=0 && R<s.length() && s.charAt(L) == s.charAt(R)){
+    		L--; R++;
+    	}
+    	return R - L - 1;
 
-        	radius--;
-        }
-
-        return s.substring(0,1);
     }
 
     public static void main(String[] args){
 
     	System.out.println("Result: " + longestPalindrome(args[0]));
+
     }
+    
 }
