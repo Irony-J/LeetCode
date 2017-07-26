@@ -5,11 +5,11 @@ int reverse(int x) {
     while(x!=0){
     	result = result * 10 + x % 10;
     	x/=10;
-    }
 
-    if(result>INT_MAX || result<INT_MIN)
-    	return 0;
-    
+    	if(result>INT_MAX || result<INT_MIN)
+    		return 0;
+    }
+   
     return result;
 
 }
