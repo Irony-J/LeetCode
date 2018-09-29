@@ -5,15 +5,16 @@ class Solution:
         :type target: int
         :rtype: List[int]
         """
-        dic = dict(zip([x for x in range(len(nums))],nums))
+        dic = dict(zip(nums,[x for x in range(len(nums))]))
         for i in range(len(nums)):
-            index = dic.get(9-i)
+            index = dic.get((9-nums[i]))
             if index is not None:
                 return [i,index]
 
 
-if __name__ == "main":
+if __name__ == "__main__":
     nums = [2, 7, 11, 15]
     target = 9
-    result = twoSum(nums, target)
+    x = Solution()
+    result = x.twoSum(nums, target)
     print(result)
